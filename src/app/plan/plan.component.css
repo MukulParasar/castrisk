@@ -1,0 +1,114 @@
+:host {
+  /* This makes the component fill the available space */
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  padding: 2rem;
+
+  /* This applies your local image to the full page background */
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/planner-background.png');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+/* This container now sits ON TOP of the background */
+.plan-container {
+  margin: auto; /* This centers the content block */
+  width: 100%;
+  max-width: 800px; /* Limit the width of the content for readability */
+  height: 90vh; /* Set a fixed height for the card */
+  max-height: 700px; /* And a max-height for very large screens */
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  color: #333;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.8s ease-in-out;
+  
+  /* Make the container a flex container to position its children */
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-header {
+  background-color: #0d6efd;
+  color: white;
+  padding: 1.5rem 2rem;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.plan-title {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+/* --- THIS IS THE KEY FIX --- */
+.plan-body {
+  padding: 1rem 2rem;
+  flex-grow: 1; /* This tells the body to take up all available vertical space */
+  overflow-y: auto; /* A scrollbar will appear automatically if the content is too tall */
+}
+
+.plan-description {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.plan-section h5 {
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.plan-section ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.plan-section li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.plan-section li:last-child {
+  border-bottom: none;
+}
+
+.plan-actions {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.btn-outline-secondary {
+  background-color: transparent;
+  color: #6c757d;
+  border: 1px solid #6c757d;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+

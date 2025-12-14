@@ -1,0 +1,76 @@
+:host {
+  display: flex;
+  flex-grow: 1;
+}
+
+.map-wrapper {
+  flex: 2;
+  position: relative; /* This is crucial for positioning the overlay */
+}
+
+#map {
+  height: 100%;
+}
+
+.dashboard-panel {
+  flex: 1;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-panel .card {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-panel .card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.placeholder-text {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #6c757d;
+}
+
+/* --- NEW: Styles for Loading Overlay and Spinner --- */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensures it's on top of the map */
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+

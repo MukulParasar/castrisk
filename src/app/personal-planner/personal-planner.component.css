@@ -1,0 +1,207 @@
+:host {
+  /* This makes the component fill the available space */
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  padding: 2rem;
+
+  /* This applies your local image to the full page background */
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/personal-planner.png');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+/* This container now sits ON TOP of the background */
+.planner-container {
+  margin: auto; /* This centers the content block */
+  width: 100%;
+  max-width: 800px; /* Limit the width of the content for readability */
+  min-height: 400px; /* Ensures the card has a minimum height */
+  max-height: 90vh; /* Prevents the card from being taller than the viewport */
+  background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white card */
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  padding: 2rem 3rem;
+  color: #333; /* Dark text for readability on a light card */
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.8s ease-in-out;
+  
+  /* --- Make the container a flex container --- */
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Target the direct child (form, loading, or results view) --- */
+.planner-container > div {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* This makes the currently active view fill the entire card */
+  
+  /* --- THIS IS THE FIX --- */
+  /* A scrollbar will appear automatically if the content is too tall for the card */
+  overflow-y: auto;
+}
+
+
+/* --- Styles for the FORM view --- */
+.form-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #0d6efd; /* Bootstrap Primary Blue */
+}
+
+/* --- Styles for the RESULTS view --- */
+.results-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #0d6efd;
+}
+
+.alert-danger {
+  font-weight: 500;
+}
+
+.results-section {
+  margin-bottom: 1.5rem;
+}
+
+.results-section h5 {
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Button & Form Input Styles --- */
+.form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 8px;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.location-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.location-message {
+  font-style: italic;
+  color: #555;
+  margin: 0;
+  padding: 0.5rem 0;
+  flex-grow: 1;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.btn-secondary {
+  background-color: #f8f9fa;
+  color: #333;
+  border: 1px solid #ced4da;
+  flex-shrink: 0;
+}
+
+.btn-primary {
+  background-image: linear-gradient(to right, #0d6efd, #0d61e2);
+  color: white;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:disabled {
+  background-color: #e9ecef;
+  background-image: none;
+  color: #adb5bd;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* --- Styles for Plan Results --- */
+.results-section ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.results-section li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.results-section li:last-child {
+  border-bottom: none;
+}
+
+.results-actions {
+  /* --- This pushes the buttons to the bottom --- */
+  margin-top: auto; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.btn-success {
+  background-image: linear-gradient(to right, #198754, #157347);
+  color: white;
+}
+
+.btn-outline-secondary {
+  background-color: transparent;
+  color: #6c757d;
+  border: 1px solid #6c757d;
+}
+

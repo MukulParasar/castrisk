@@ -1,0 +1,29 @@
+<div class="plan-container" *ngIf="plan">
+  <div class="plan-header">
+    <h2 class="plan-title">{{ plan.title }}</h2>
+  </div>
+
+  <div class="plan-body">
+    <p class="plan-description">{{ plan.description }}</p>
+
+    <div class="plan-section">
+      <h5>Recommended Actions:</h5>
+      <ul>
+        <li *ngFor="let step of plan.steps">{{ step }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="plan-actions">
+    <button (click)="goBack()" class="btn btn-outline-secondary">Back to Map</button>
+  </div>
+</div>
+
+<!-- This will show if the plan is not found -->
+<div class="plan-container" *ngIf="!plan">
+  <div class="plan-body text-center">
+    <p>Plan not found or is currently loading...</p>
+    <button (click)="goBack()" class="btn btn-secondary mt-3">Back to Map</button>
+  </div>
+</div>
+

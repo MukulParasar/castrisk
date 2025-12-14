@@ -1,0 +1,45 @@
+<div class="map-wrapper">
+  
+  <!-- NEW: Loading Overlay -->
+  <div *ngIf="isLoading" class="loading-overlay">
+    <div class="spinner"></div>
+    <p>Loading Risk Data...</p>
+  </div>
+
+  <div id="map"></div>
+</div>
+
+<div class="dashboard-panel">
+  <!-- This card will now only show when a location is selected -->
+  <div class="card shadow-sm" *ngIf="selectedLocation">
+    <div class="card-body">
+      <h3 class="card-title text-primary text-center mb-3">{{ selectedLocation.properties.area }}</h3>
+      <hr>
+      <div class="text-center">
+        <h4 class="card-subtitle mb-2 text-muted">Risk Score</h4>
+        <p class="display-3 fw-bold text-danger">{{ selectedLocation.properties.risk_score }}</p>
+      </div>
+      <hr>
+      <p class="card-text"><b>Description:</b> {{ selectedLocation.properties.description }}</p>
+      <p class="card-text"><b>Risk Level:</b>
+        <span class="badge"
+              [ngClass]="{
+                'bg-success': selectedLocation.properties.risk_category === 'Low',
+                'bg-warning': selectedLocation.properties.risk_category === 'Moderate',
+                'bg-danger': selectedLocation.properties.risk_category === 'High'
+              }">
+          {{ selectedLocation.properties.risk_category }}
+        </span>
+      </p>
+      <p class="card-text"><b>City:</b> {{ selectedLocation.properties.city }}</p>
+      <p class="card-text mt-auto"><b>Plan ID:</b> {{ selectedLocation.properties.mitigation_plan_id }}</p>
+      <button class="btn btn-primary w-100 mt-3" (click)="viewPlan()">View Mitigation Plan</button>
+    </div>
+  </div>
+
+  <!-- Show a message if no location is selected yet -->
+  <div *ngIf="!selectedLocation" class="placeholder-text">
+    <p class="fs-4">Click a point on the map to see its risk details.</p>
+  </div>
+</div>
+

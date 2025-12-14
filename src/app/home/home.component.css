@@ -1,0 +1,74 @@
+:host {
+  /* This makes the component grow to fill the available space */
+  flex-grow: 1;
+  width: 100%;
+  display: flex; /* Use flexbox to center content easily */
+
+  /* This applies your local image to the full page background */
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/home-background.png');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed; /* Makes the background stay in place */
+}
+
+/* This container now sits ON TOP of the background */
+.hero-container {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  color: white;
+}
+
+.hero-content {
+  max-width: 800px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.hero-title {
+  font-size: 4.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.75rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.hero-button {
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+.hero-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
